@@ -6,3 +6,32 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Cart {
+  id        Int     @id @default(autoincrement())
+  product   product @relation(fields: [productId], references: [id])
+  productId Int
+  user      user    @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model product {
+  id                Int     @id @default(autoincrement())
+  name              String?
+  price             Float?
+  image_url         String?
+  description       String?
+  country_of_origin String?
+  Cart              Cart[]
+
+  @@map("products ")
+}
+
+model user {
+  id         Int     @id @default(autoincrement())
+  username   String?
+  password   String?
+  first_name String?
+  last_name  String?
+  Cart       Cart[]
+}
