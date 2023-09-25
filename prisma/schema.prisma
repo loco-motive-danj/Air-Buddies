@@ -9,29 +9,36 @@ datasource db {
 
 model Cart {
   id        Int     @id @default(autoincrement())
-  product   product @relation(fields: [productId], references: [id])
-  productId Int
   user      user    @relation(fields: [userId], references: [id])
   userId    Int
 }
 
+model CartProduct {
+
+  id        Int 
+  product   Int @relation(fields: [productId], references: [id])
+  productId Int 
+  cart      Int @relation(fields: [cartId], references: [id])
+  cartId    Int
+  quantity  Int 
+}
+
 model product {
   id                Int     @id @default(autoincrement())
-  name              String?
-  price             Float?
-  image_url         String?
-  description       String?
-  country_of_origin String?
-  Cart              Cart[]
-
-  @@map("products ")
+  name              String
+  price             Float
+  image_url         String
+  description       String
+  country_of_origin String
 }
 
 model user {
   id         Int     @id @default(autoincrement())
-  username   String?
-  password   String?
-  first_name String?
-  last_name  String?
-  Cart       Cart[]
+  username   String
+  password   String
+  first_name String
+  last_name  String
+  role       String
 }
+
+
