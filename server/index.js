@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const PORT =8081;
+const PORT =3000;
 
 const cors = require('cors');
 app.use(cors());
@@ -13,9 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", require('./api'))
 
-app.get("*/", (_req, res) => {
-    res.sendFile(path.join(__dirname, "../public", "index.html"));
+app.get("/", (req, res) => {
+    res.send("hello world")
 })
+
 
 app.listen(PORT, ()=>{
     console.log('On port'+PORT)

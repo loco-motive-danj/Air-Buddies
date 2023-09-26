@@ -11,6 +11,7 @@ model Cart {
   id          Int           @id @default(autoincrement())
   user        User          @relation(fields: [userId], references: [id])
   userId      Int
+  is_cart     Boolean
   CartProduct CartProduct[]
 }
 
