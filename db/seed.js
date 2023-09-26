@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-import { faker } from '@faker-js/faker';
+const { faker } = require('@faker-js/faker');
 
 async function seed() {
     console.log("Clearing the previous database")
@@ -19,13 +19,13 @@ async function seed() {
                 password: faker.internet.password(),
                 first_name: faker.person.firstName(),
                 last_name: faker.person.lastName(),
-                role: user//user or Admin
+                role: "user"//user or Admin
             }
         })
 
         await prisma.product.create({
             data: {
-                name: (faker.commerce.productDescription() + "Air"),
+                name: (faker.commerce.productAdjective() + " Air"),
                 price: faker.number.float({ precision: 0.01 }),
                 image_url: faker.image.urlLoremFlickr({ category: 'can' }),
                 description: faker.lorem.sentence(),

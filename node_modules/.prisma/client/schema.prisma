@@ -9,21 +9,21 @@ datasource db {
 
 model Cart {
   id          Int           @id @default(autoincrement())
-  user        user          @relation(fields: [userId], references: [id])
+  user        User          @relation(fields: [userId], references: [id])
   userId      Int
   CartProduct CartProduct[]
 }
 
 model CartProduct {
   id        Int     @id @default(autoincrement())
-  product   product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
   productId Int
   cart      Cart    @relation(fields: [cartId], references: [id])
   cartId    Int
   quantity  Int
 }
 
-model product {
+model Product {
   id                Int           @id @default(autoincrement())
   name              String
   price             Float
@@ -33,7 +33,7 @@ model product {
   CartProduct       CartProduct[]
 }
 
-model user {
+model User {
   id         Int    @id @default(autoincrement())
   username   String
   password   String
