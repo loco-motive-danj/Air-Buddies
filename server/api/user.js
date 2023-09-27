@@ -12,45 +12,7 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
-router.get('/:id', async (req,res,next)=>{
-    try{
-        const userById = await prisma.user.findUnique({
-            where:{
-                id: Number(req.params.id)
-            }
-        });
-        res.send(userById)
-    }catch(error){
-        next(error)
-    }
-})
 
-router.get('/user/:id', async (req, res, next) =>{
-    try {
-        const allCarts = await prisma.cart.findMany({
-            where: {
-                userId: Number(req.params.id)
-            }
-        });
-        res.send(allCarts)
-    } catch (error) {
-        next(error)
-    }
-})
-
-router.get('/user/:id/cart', async (req, res, next) =>{
-    try {
-        const allCarts = await prisma.cart.findMany({
-            where: {
-                userId: Number(req.params.id),
-                is_cart: true,
-            },
-        });
-        res.send(allCarts)
-    } catch (error) {
-        next(error)
-    }
-})
 
 router.delete('/:id', async (req,res,next)=>{
     try{
@@ -67,7 +29,7 @@ router.delete('/:id', async (req,res,next)=>{
 
 router.post('/', async (req,res,next)=>{
     try{
-        const user = await prisma.user.create({
+        const user = await prisma.cart.create({
             data:req.body
         })
         res.send(user)
