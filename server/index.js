@@ -4,7 +4,7 @@ const ViteExpress = require("vite-express")
 const path = require("path");
 const jwt = require("jsonwebtoken");
 
-const PORT = 8081;
+const PORT = 3000;
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
