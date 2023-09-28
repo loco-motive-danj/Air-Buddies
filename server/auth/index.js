@@ -3,7 +3,7 @@ const router = express.Router();
 const {PrismaClient} = require("@prisma/client");
 const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
-const bcyrpt = require("bcyrpt")
+const bcrypt = require("bcrypt")
 
 router.post("/register", async (req, res, next)=>{
 
@@ -30,7 +30,7 @@ router.post("/register", async (req, res, next)=>{
 
 
 
-router.post("/login")
+router.post("/login", async (req, res, next)=>{
     try {
         const user = await prisma.user.findUnique({
             where:{username: req.body.username},
@@ -40,7 +40,7 @@ router.post("/login")
             return res.status(401).send("Invalid Login")
         }
 
-        const isValid = bycrpt.compare(req.body.password, user.password)
+        const isValid = bcrypt.compare(req.body.password, user.password)
 
         if (!isValid){
             return res.status(401).send("Invalid Login")
@@ -53,6 +53,6 @@ router.post("/login")
     } catch (error) {
         next(error)
     }
-
+})
 
 module.exports= router;
