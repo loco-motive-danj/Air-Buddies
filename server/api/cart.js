@@ -15,7 +15,7 @@ router.get('/', async (req,res,next)=>{
 router.get('/orders/:id', async (req, res, next) => {
    console.log(req.params.id)
     try {
-        const orders = await prisma.user.findUnique({
+        const orders = await prisma.user.findMany({
             where:{
                 id: Number(req.params.id)
             },
