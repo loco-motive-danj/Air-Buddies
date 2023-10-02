@@ -1,5 +1,3 @@
-function Products() {
-   return <>Prodicks</>;
+export default function Products() {
+   return <>cock</>;
 }
-
-export default Products;

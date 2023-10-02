@@ -1,16 +1,21 @@
 import { Route, Routes } from "react-router-dom";
-import AuthForm from "./components/auth/AuthForm.jsx";
 import "./App.css";
 import Products from "./pages/Products";
 import Account from "./pages/Account.jsx";
-// import SingleProduct from "./pages/SingleProduct";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "./reducers/api";
 import Home from "./pages/Home.jsx";
 
 function App() {
-   return (
+   const products = useGetProductsQuery();
+
+   const [load, setLoad] = useState(true);
+
+   useEffect(() => {
+      setLoad(products.isLoading);
+   }, [products]);
+
+   const loadedRouter = (
       <>
          <Routes>
             <Route path="/" element={<Home />} />
@@ -19,6 +24,8 @@ function App() {
          </Routes>
       </>
    );
+
+   return load ? <h1>Loading</h1> : loadedRouter;
 }
 
 export default App;

@@ -2,31 +2,36 @@ import React, { useEffect, useState } from "react";
 import { useGetProductsQuery } from "../reducers/api";
 
 export default function FeaturedProducts() {
-   const [minCeiling, setMinCeiling] = useState(0);
-   const [firstProduct, setFirstProduct] = useState(0);
    const { data: products = [] } = useGetProductsQuery();
    const [displayProducts, setDisplayProducts] = useState([]);
-
+   let ceiling = products.length - 6;
+   const [floor, setFloor] = useState(0);
+   console.log(floor);
    useEffect(() => {
-      setMinCeiling(products.length - 6);
-      function randomMin(ceiling) {
-         return Math.floor(Math.random() * ceiling);
+      function randomMin(max) {
+         return Math.floor(Math.random() * max);
       }
-      setFirstProduct(randomMin(minCeiling));
-      setDisplayProducts(products.slice(firstProduct, firstProduct + 6));
+      setFloor(randomMin(ceiling));
+      setDisplayProducts(products.slice(floor, floor + 6));
    }, []);
 
-   return (
+   const featuredDisplay = (
       <>
          {displayProducts.map((e, i) => {
             return (
-               <div className="displayCard" key={i}>
-                  <img src={e.image_url} className="displayCardImage" />
-                  <p className="displayCardName">{e.name}</p>
-                  <p className="displayCardPrice">{e.price}</p>
+               <div className="display-card" key={i}>
+                  <img src={e.image_url} className="display-card-image" />
+                  <p className="display-card-name">{e.name}</p>
+                  <p className="display-card-price">{e.price}</p>
                </div>
             );
          })}
       </>
+   );
+
+   return displayProducts.length === 0 ? (
+      <p>honk</p>
+   ) : (
+      <div className="display-container">{featuredDisplay}</div>
    );
 }
