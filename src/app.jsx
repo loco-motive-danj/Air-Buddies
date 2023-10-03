@@ -1,11 +1,12 @@
 import {Route, Routes} from "react-router-dom";
 import AuthForm from "./components/auth/AuthForm.jsx";
 import "./App.css";
-import Products from "./pages/Products";
-// import SingleProduct from "./pages/SingleProduct";
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {useGetProductsQuery} from "./reducers/api";
+import ProductsPage from "./pages/ProductsPage.jsx";
+import SingleProductPage from "./pages/SingleProductPage.jsx";
+
 
 function App() {
 
@@ -21,13 +22,15 @@ function App() {
 
     const guestRouter = (
         <Routes>
-            <Route path="/*" element={<AuthForm/>}/>
+            <Route path="/products" element={<ProductsPage products={products} />} />
+            <Route path="/products/:id" element={<SingleProductPage />}/>
         </Routes>
     );
     const userRouter = (
         
         <Routes>
-            <Route index element={<Products/>}/>
+            <Route path="/*" element={<AuthForm />} />
+            <Route path="/products" element={<ProductsPage products={products} />} />
         </Routes>
     );
 

@@ -15,7 +15,10 @@ router.post("/register", async (req, res, next)=>{
         const user = await prisma.user.create({
             data: {
                 username: req.body.username,
-                password: hashedPassword
+                password: hashedPassword,
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                role: req.body.role,
             }
         })
 
@@ -36,7 +39,9 @@ router.post("/login", async (req, res, next)=>{
     const hashedPassword = await bcrypt.hash(req.body.password, salt_rounds)
     try {
         const user = await prisma.user.findUnique({
-            where:{username: req.body.username},
+            where:{
+                username: req.body.username
+            },
         })
 
         if(!user){
