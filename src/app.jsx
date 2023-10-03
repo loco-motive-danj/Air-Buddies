@@ -1,11 +1,12 @@
 import {Route, Routes} from "react-router-dom";
 import AuthForm from "./components/auth/AuthForm.jsx";
 import "./App.css";
-import Products from "./pages/Products";
+// import Products from "./pages/Products";
 // import SingleProduct from "./pages/SingleProduct";
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {useGetProductsQuery} from "./reducers/api";
+import InactiveUserOrder from "./pages/Account.jsx";
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
     const userRouter = (
         
         <Routes>
-            <Route index element={<Products/>}/>
+            <Route index element={<InactiveUserOrder/>}/>
         </Routes>
     );
 

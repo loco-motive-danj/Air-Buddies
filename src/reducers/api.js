@@ -112,7 +112,8 @@ export const storeApi = createApi({
 const dataSlice = createSlice({
     name:"data",
     initialState:{
-        products:[]
+        products:[], 
+        orders: [],
     },
     reducers:{},
     extraReducers: (builder)=>{
@@ -136,8 +137,18 @@ const dataSlice = createSlice({
             state.products.push(payload);
             return state;
         })
-    }
-})
+
+        builder.addMatcher(storeApi.endpoints.getOrdersById.matchFulfilled, (state, { payload }) => {
+            console.log(payload)
+            return {
+                ...state,
+                orders: payload
+                
+            }
+        });
+    
+
+}})
 
 export default dataSlice.reducer;
 
