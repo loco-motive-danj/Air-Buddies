@@ -12,7 +12,7 @@ async function seed() {
     
     console.log("Seeding the database")
     
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 10; i++) {
         const salt_rounds = 5;
 
         const hashedPassword = await bcrypt.hash("password123", salt_rounds)
@@ -29,7 +29,7 @@ async function seed() {
         await prisma.product.create({
             data: {
                 name: (faker.commerce.productAdjective() + " Air"),
-                price: faker.number.float({ precision: 0.01 }),
+                price: Number(faker.commerce.price({min: 99, max: 1000})),
                 image_url: faker.image.urlLoremFlickr({ category: 'can' }),
                 description: faker.lorem.sentence(),
                 country_of_origin: "US"
