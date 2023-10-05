@@ -9,7 +9,7 @@ import { useGetProductsQuery } from "../reducers/api";
 function ProductsPage() {
     const [filterProducts, setFilterProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState("")
-    const [priceRange, setPriceRange] = useState([0, 100]);
+    const [priceRange, setPriceRange] = useState([0, 50]);
     const { data: products = [] } = useGetProductsQuery();
     const [priceRangeText, setPriceRangeText] = useState(`$${priceRange[0]} - $${priceRange[1]}`);
 
@@ -54,7 +54,7 @@ function ProductsPage() {
                 <button className="searchButton" onClick={handleSearch}>Search</button>
                 
                 <h3>Filter By Price</h3>
-                <PriceSlider className="priceSlider" range min={0} max={100} value={priceRange} onChange={handlePriceChange} />
+                <PriceSlider className="priceSlider" range min={0} max={50} value={priceRange} onChange={handlePriceChange} />
                 <div className="priceRange">{priceRangeText}</div>
                 
                 <h3>Filter By Country</h3>

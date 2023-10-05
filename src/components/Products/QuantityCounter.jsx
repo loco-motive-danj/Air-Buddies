@@ -15,9 +15,9 @@ function QuantityCounter() {
 
   return (
     <div>
-      <button onClick={handleDecrement}>-</button>
-      <span>{quantity}</span>
-      <button onClick={handleIncrement}>+</button>
+      <button className="qtyButton" onClick={handleDecrement}>-</button>
+      <span className='qtyNumButton'>{quantity}</span>
+      <button className="qtyButton" onClick={handleIncrement}>+</button>
     </div>
   );
 }

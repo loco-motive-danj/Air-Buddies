@@ -19,8 +19,16 @@ router.get('/orders/:id', async (req, res, next) => {
             where:{
                 id: Number(req.params.id)
             },
-            include:{
-                Cart: true
+            include: {
+                Cart: {
+                    include: {
+                        CartProduct: {
+                            include: {
+                                Product: true
+                            }
+                        }
+                    }
+                }
             }
         });
         res.send(orders.Cart.filter((i)=> i.is_cart === false))

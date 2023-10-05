@@ -8,7 +8,7 @@ import QuantityCounter from '../components/Products/QuantityCounter'
 
 function SingleProductPage() {
     const { id } = useParams();
-    const {data: product, isLoading } = useGetProductByIdQuery(id);
+    const {data: productId, isLoading } = useGetProductByIdQuery(id);
     const navigate = useNavigate();
 
     const handleGoBack = () => {
@@ -17,9 +17,9 @@ function SingleProductPage() {
     
   return (
     <div>
-      {isLoading ? (<h1>Loading...</h1>) : !product ? (<h1>Product Not Found</h1>) : (
+      {isLoading ? (<h1>Loading...</h1>) : !productId ? (<h1>Product Not Found</h1>) : (
         <div className="singleProductContainer">
-            <ProductDetails product={product} showDescription={true} />
+            <ProductDetails product={productId} showDescription={true} />
             <div className="buttonsContainer">
               <button className='cartButton'>Add To Cart</button>
               <button onClick={handleGoBack}>Back to Products</button>

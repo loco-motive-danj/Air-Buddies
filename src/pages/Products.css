@@ -96,6 +96,11 @@
     margin: 20px 20px 20px 220px;
 }
   
+.productDetails {
+    display: flex;
+    justify-content: center;
+}
+
 .productDetails img {
     width: 100%; 
     max-width: 300px; 
