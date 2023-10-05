@@ -1,31 +1,34 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Products from "./pages/Products";
-import Account from "./pages/Account.jsx";
-import React, { useEffect, useState } from "react";
-import { useGetProductsQuery } from "./reducers/api";
-import Home from "./pages/Home.jsx";
+// import SingleProduct from "./pages/SingleProduct";
+import React, {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
+import {useGetProductsQuery} from "./reducers/api";
 
 function App() {
    const products = useGetProductsQuery();
 
    const [load, setLoad] = useState(true);
 
-   useEffect(() => {
-      setLoad(products.isLoading);
-   }, [products]);
+    useEffect(()=>{
+        setLoad(products.isLoading)
+    }, [products])
 
-   const loadedRouter = (
-      <>
-         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/account" element={<Account />} />
-         </Routes>
-      </>
-   );
+    const guestRouter = (
+        <Routes>
+            <Route path="/*" element={<AuthForm/>}/>
+        </Routes>
+    );
+    const userRouter = (
+        
+        <Routes>
+            <Route index element={<Products/>}/>
+        </Routes>
+    );
 
-   return load ? <h1>Loading</h1> : loadedRouter;
+    const loggedIn = me.userId;
+    return load? <h1>Loading Data</h1>:loggedIn !== null ? userRouter : guestRouter;
 }
 
 export default App;

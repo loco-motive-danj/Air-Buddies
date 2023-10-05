@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const { faker } = require('@faker-js/faker');
 const bcrypt = require("bcrypt")
+
 async function seed() {
     console.log("Clearing the previous database")
     //delete order important here
