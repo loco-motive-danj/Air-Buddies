@@ -10,7 +10,7 @@ function Checkout() {
     const [selectedOption, setSelectedOption] = useState('');
 
     const handleOptionChange = (event) => {
-        setSelectedOption(event.target.vale)
+        setSelectedOption(event.target.value)
     };
   
   

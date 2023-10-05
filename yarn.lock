@@ -469,6 +469,11 @@ binary-extensions@^2.0.0:
   resolved "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
+bluebird@^3.5.1:
+  version "3.7.2"
+  resolved "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz"
+  integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
+
 body-parser@1.19.2:
   version "1.19.2"
   resolved "https://registry.npmjs.org/body-parser/-/body-parser-1.19.2.tgz"
@@ -689,6 +694,15 @@ csstype@^3.0.2:
   version "3.1.2"
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.2.tgz"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
+
+csvtojson@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.npmjs.org/csvtojson/-/csvtojson-2.0.10.tgz"
+  integrity sha512-lUWFxGKyhraKCW8Qghz6Z0f2l/PqB1W3AO0HKJzGIQ5JRSlR651ekJDiGJbBT4sRNNv5ddnSGVEnsxP9XRCVpQ==
+  dependencies:
+    bluebird "^3.5.1"
+    lodash "^4.17.3"
+    strip-bom "^2.0.0"
 
 date-fns@^2.29.1:
   version "2.29.3"
@@ -1129,6 +1143,11 @@ is-number@^7.0.0:
   resolved "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
+is-utf8@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.npmjs.org/is-utf8/-/is-utf8-0.2.1.tgz"
+  integrity sha512-rMYPYvCzsXywIsldgLaSoPlw5PfoB/ssr7hY4pLfcodrA5M/eArza1a9VmTiNIBNMjOGr1Ow9mTyU2o69U6U9Q==
+
 is-what@^3.14.1:
   version "3.14.1"
   resolved "https://registry.npmjs.org/is-what/-/is-what-3.14.1.tgz"
@@ -1256,7 +1275,7 @@ lodash.once@^4.0.0:
   resolved "https://registry.npmjs.org/lodash.once/-/lodash.once-4.1.1.tgz"
   integrity sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==
 
-lodash@^4.17.21:
+lodash@^4.17.21, lodash@^4.17.3:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -2002,6 +2021,13 @@ strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
   dependencies:
     ansi-regex "^5.0.1"
+
+strip-bom@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/strip-bom/-/strip-bom-2.0.0.tgz"
+  integrity sha512-kwrX1y7czp1E69n2ajbG65mIo9dqvJ+8aBQXOGVxqwvNbsXdFM6Lq37dLAY3mknUwru8CfcCbfOLL/gMo+fi3g==
+  dependencies:
+    is-utf8 "^0.2.0"
 
 supports-color@^5.3.0, supports-color@^5.5.0:
   version "5.5.0"
