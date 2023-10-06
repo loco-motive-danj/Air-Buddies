@@ -13,7 +13,7 @@ export default function Nav() {
          Account
       </Link>
    );
-   const signUp = <Link className="link-item">Sign-Up</Link>;
+   const signUp = <Link to={"/authform"} className="link-item">Sign-Up</Link>;
 
    return (
       <nav className="Navbar">
@@ -28,6 +28,9 @@ export default function Nav() {
                Products
             </Link>
             {loggedIn ? accountLink : signUp}
+            <Link to={"/"} className="link-item">
+               Cart
+            </Link>
          </ul>
       </nav>
    );

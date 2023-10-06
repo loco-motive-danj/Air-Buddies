@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLoginMutation, useRegisterMutation } from "../../reducers/auth";
 import TextInput from "../inputs/TextInput.jsx";
+import { useNavigate } from "react-router-dom";
+
 
 /**
  * AuthForm allows a user to either login or register for an account.
@@ -13,9 +15,9 @@ function AuthForm() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [first_name, setFirst_name] = useState("");
-  const [last_name, setLast_name] = useState("");
-  const [role, setRole] = useState("");
+  // const [first_name, setFirst_name] = useState("");
+  // const [last_name, setLast_name] = useState("");
+  // const [role, setRole] = useState("");
   
   const [isLogin, setIsLogin] = useState(true);
   const authType = isLogin ? "Login" : "Register";
@@ -23,6 +25,8 @@ function AuthForm() {
     ? "Don't have an account?"
     : "Already have an account?";
   const oppositeAuthType = isLogin ? "Register" : "Login";
+
+  const navigate = useNavigate();
 
   /**
    * Send credentials to server for authentication
@@ -32,11 +36,12 @@ function AuthForm() {
     setError(null);
 
     const authMethod = isLogin ? login : register;
-    const credentials = { username, password, first_name, last_name, role };
+    const credentials = { username, password };
 
     try {
       setLoading(true);
       await authMethod(credentials).unwrap();
+      navigate("/account");
     } catch (error) {
       setLoading(false);
       setError(error.data);
@@ -62,7 +67,7 @@ function AuthForm() {
           Password
           <TextInput vl={password} type={"password"} chg={setPassword}/>
         </label>
-        <label>
+        {/* <label>
           First Name
           <TextInput vl={first_name} type={"text"} chg={setFirst_name}/>
         </label>
@@ -73,7 +78,7 @@ function AuthForm() {
         <label>
           Role
           <TextInput vl={role} type={"text"} chg={setRole}/>
-        </label>
+        </label> */}
         <button type="submit">{authType}</button>
       </form>
       <p>
@@ -86,7 +91,7 @@ function AuthForm() {
           {oppositeAuthType}
         </a>
       </p>
-      {loading && <p>Logging in...</p>}
+      {loading}
       {error && <p>{error}</p>}
     </main>
   );
