@@ -9,6 +9,7 @@ import Home from "./pages/Home.jsx";
 import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
 import ThankYou from "./pages/ThankYou";
+import AuthForm from "./components/auth/AuthForm";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/thankyou" element={<ThankYou />} />
+            <Route path="/authform" element={<AuthForm />} />
          </Routes>
       </>
    );

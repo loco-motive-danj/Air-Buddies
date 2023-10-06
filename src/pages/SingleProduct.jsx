@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useGetProductByIdQuery } from '../reducers/api'
 import { useNavigate } from 'react-router-dom'
 import QuantityCounter from '../components/Products/QuantityCounter'
+import "./SingleProduct.css"
 
 
 function SingleProductPage() {
@@ -12,7 +13,7 @@ function SingleProductPage() {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
-        navigate(-1);
+        navigate('/products');
       };
     
   return (
