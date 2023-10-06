@@ -1,7 +1,9 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const { faker } = require('@faker-js/faker');
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const { products } = require("./products");
+
 
 async function seed() {
     console.log("Clearing the previous database")
@@ -27,15 +29,11 @@ async function seed() {
             }
         })
 
-        await prisma.product.create({
-            data: {
-                name: (faker.commerce.productAdjective() + " Air"),
-                price: Number(faker.commerce.price({min: 99, max: 1000})),
-                image_url: faker.image.urlLoremFlickr({ category: 'can' }),
-                description: faker.lorem.sentence(),
-                country_of_origin: "US"
-            }
-        })
+        for (let product of products) {
+            await prisma.product.create({
+                data: product
+            })
+        }
     }
     
     console.log("Database seeded")

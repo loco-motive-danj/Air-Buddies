@@ -13,7 +13,10 @@ function AuthForm() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [first_name, setFirst_name] = useState("");
+  const [last_name, setLast_name] = useState("");
+  const [role, setRole] = useState("");
+  
   const [isLogin, setIsLogin] = useState(true);
   const authType = isLogin ? "Login" : "Register";
   const oppositeAuthCopy = isLogin
@@ -29,7 +32,7 @@ function AuthForm() {
     setError(null);
 
     const authMethod = isLogin ? login : register;
-    const credentials = { username, password };
+    const credentials = { username, password, first_name, last_name, role };
 
     try {
       setLoading(true);
@@ -58,6 +61,18 @@ function AuthForm() {
         <label>
           Password
           <TextInput vl={password} type={"password"} chg={setPassword}/>
+        </label>
+        <label>
+          First Name
+          <TextInput vl={first_name} type={"text"} chg={setFirst_name}/>
+        </label>
+        <label>
+          Last Name
+          <TextInput vl={last_name} type={"text"} chg={setLast_name}/>
+        </label>
+        <label>
+          Role
+          <TextInput vl={role} type={"text"} chg={setRole}/>
         </label>
         <button type="submit">{authType}</button>
       </form>
